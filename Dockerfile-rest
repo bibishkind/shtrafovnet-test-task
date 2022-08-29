@@ -1,0 +1,11 @@
+FROM golang
+
+WORKDIR /app
+
+COPY . .
+
+EXPOSE 80
+
+RUN go build -o rest cmd/rest.go
+
+CMD ["./rest"]

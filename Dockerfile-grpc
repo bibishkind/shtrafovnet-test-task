@@ -1,0 +1,11 @@
+FROM golang
+
+WORKDIR /app
+
+COPY . .
+
+EXPOSE 50051
+
+RUN go build -o grpc cmd/grpc.go
+
+CMD ["./grpc"]

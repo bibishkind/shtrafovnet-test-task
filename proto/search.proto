@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+
+option go_package = "./pb";
+
+message Owner {
+    string firstname = 1;
+    string middlename = 2;
+    string lastname = 3;
+}
+
+message Company {
+    string inn = 1;
+    string kpp = 2;
+    Owner owner = 3;
+}
+
+message CompanyByINNRequest {
+    string inn = 1;
+}
+
+message CompanyByINNResponse {
+    Company company = 1;
+}
+
+service Search {
+    rpc GetCompanyByINN(CompanyByINNRequest) returns (CompanyByINNResponse) {
+        option (google.api.http) = {
+            get: "/api/company"
+          };
+    };
+}

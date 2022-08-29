@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  grpc:
+    build:
+      dockerfile: Dockerfile-grpc
+    ports:
+      - "50051:50051"
+    container_name: "grpc"
+
+  rest:
+    build:
+      dockerfile: Dockerfile-rest
+    ports:
+      - "80:80"
+    container_name: "rest"
