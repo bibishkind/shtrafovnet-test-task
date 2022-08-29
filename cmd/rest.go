@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	port := flag.String("port", "80", "REST server port")
+	addr := flag.String("addr", "0.0.0.0:80", "REST server addr")
 	flag.Parse()
 
 	logrus.SetFormatter(new(logrus.JSONFormatter))
@@ -25,7 +25,7 @@ func main() {
 
 	go func() {
 		logrus.Infof("starting rest server...")
-		if err := restServer.ListenAndServe(*port); err != http.ErrServerClosed {
+		if err := restServer.ListenAndServe(*addr); err != http.ErrServerClosed {
 			logrus.Fatalf("error starting rest server %v", err)
 		}
 	}()

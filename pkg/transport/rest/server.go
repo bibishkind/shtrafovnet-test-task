@@ -25,8 +25,8 @@ func NewServer(grpcServer *grpc.Server) *Server {
 	}
 }
 
-func (srv *Server) ListenAndServe(port string) error {
-	srv.httpServer.Addr = ":" + port
+func (srv *Server) ListenAndServe(addr string) error {
+	srv.httpServer.Addr = addr
 
 	err := pb.RegisterSearchHandlerServer(context.Background(), srv.serveMux, srv.grpcServer)
 	if err != nil {

@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	port := flag.String("port", "50051", "GRPC server port")
+	addr := flag.String("addr", "0.0.0.0:50051", "GRPC server addr")
 	flag.Parse()
 
 	logrus.SetFormatter(new(logrus.JSONFormatter))
@@ -21,7 +21,7 @@ func main() {
 
 	go func() {
 		logrus.Infof("starting grpc server...")
-		if err := grpcServer.ListenAndServe(*port); err != nil {
+		if err := grpcServer.ListenAndServe(*addr); err != nil {
 			logrus.Fatalf("error starting grpc server: %v", err)
 		}
 	}()

@@ -21,8 +21,8 @@ func NewServer(srvc service.Service) *Server {
 	}
 }
 
-func (srv *Server) ListenAndServe(port string) error {
-	lis, err := net.Listen("tcp", ":"+port)
+func (srv *Server) ListenAndServe(addr string) error {
+	lis, err := net.Listen("tcp", addr)
 	if err != nil {
 		return err
 	}

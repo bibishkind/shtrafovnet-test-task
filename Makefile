@@ -1,5 +1,10 @@
-run:
-	go run cmd/main.go
+# To make rest server run
+rest:
+	go run cmd/rest.go --addr=127.0.0.1:80
+
+# To make grpc server run
+grpc:
+	go run cmd/grpc.go --addr=127.0.0.1:50051
 
 # This command generates the code from .proto files in proto directory and swagger documentation in docs directory
 pb:
